@@ -31,7 +31,7 @@ void loop(){
   
   if (mySerial.available())
   {
-    char k = mySerial.read();
+    byte k = mySerial.read();
     //Serial.write(k);
     //Serial.println(" received");
 
