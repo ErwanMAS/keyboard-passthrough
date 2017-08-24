@@ -1,7 +1,14 @@
-#!/usr/bin/env python3
-""" usage: passthrough-serial
+#!/usr/bin/env python
+""" usage: here.py FILE
 """
 import pygame
+import time
+import sys
+
+if len(sys.argv) < 2:
+    print "you did not give any arguments\n"
+    sys.exit()
+
 # coding: utf-8
 
 py_map={
@@ -87,11 +94,18 @@ if __name__ == "__main__":
     size = width, height = 320, 240
     speed = [2, 2]
     black = 0, 0, 0
+    clock = pygame.time.Clock()
+    old_time = pygame.time.get_ticks()
 
-    ser = serial.Serial('/dev/ttyUSB0', 9600)
+    ser = serial.Serial(str(sys.argv[1]), 9600)
 
     screen = pygame.display.set_mode(size)
     while True:
+        new_time = pygame.time.get_ticks()
+        waited = new_time - old_time
+        old_time = new_time
+        if waited < 60:
+          time.sleep(1.0 / (60 - waited))
         for event in pygame.event.get():
 
             if event.type in (pygame.KEYUP ,pygame.KEYDOWN):
@@ -109,3 +123,4 @@ if __name__ == "__main__":
                 print("{} {}".format("pressed" if press else "released",key))
                 ser.write(pack("!BB",1 if press else 0,key))
                 #print(ser.readlines())
+
