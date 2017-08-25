@@ -14,12 +14,12 @@ something different than /dev/ttyUSB0 (*hint*Windows COM ports*hint*).
 Usage
 -----
 
-    python here.py
+    python here.py /dev/ttyUSB0
 
 Now type in the black window, every keystroke should be mapped and forwarded,
 modifier keys like ctrl, alt and the window key should be working.
 
 Links
 -----
-For the complete description of the remote management stack, see: 
-http://euer.krebsco.de/a-software-kvm-switch/
+For a video showing the the system in use, you can go to:
+https://www.youtube.com/watch?v=T3_Bwmw8XRw

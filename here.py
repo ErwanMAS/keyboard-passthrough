@@ -3,11 +3,6 @@
 """
 import pygame
 import time
-import sys
-
-if len(sys.argv) < 2:
-    print "you did not give any arguments\n"
-    sys.exit()
 
 # coding: utf-8
 
